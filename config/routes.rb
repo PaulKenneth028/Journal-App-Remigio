@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  # resources :registrations, only: [:index, :new, :create]
   resources :tasks
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  
+  get "/login" => 'logins#new', as: "login"
+  post "/login" => 'logins#create'
+  delete "/logout" => 'logins#delete'
+  get "/registration" => "registrations#new", as: "new_user"
+  post "/registration" => "registrations#create", as: "create"
+  root "logins#new"
 end

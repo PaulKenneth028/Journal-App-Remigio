@@ -1,0 +1,12 @@
+<h1>Registered Users</h1>
+
+<% if @registereduser.any? %>
+  <ul>
+    <% @registereduser.each do |user| %>
+      <li><%= user.username %> - <%= user.email %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No registered users yet.</p>
+  <%= link_to registration_path %> register now
+<% end %>
